@@ -20,5 +20,6 @@ public class CoinPiece extends GamePiece {
 			return InteractionResult.NONE;
 		}
 	}
+	
 
 }
