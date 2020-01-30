@@ -27,4 +27,5 @@ public interface Moveable extends Drawable{
 	 */
 	public void move(Drawable[] gameBoard, int playerLocation);
 
+
 }

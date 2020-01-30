@@ -40,9 +40,10 @@ public class LevelEngine {
 	
 	
 	/*
-	 * instantiates level 1
+	 * instantiates level 1 with only static piece
 	 */
 	private void level1() {
+		playerStartLoc = 6;
 		
 	}
 	
