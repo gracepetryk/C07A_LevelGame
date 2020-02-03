@@ -21,7 +21,6 @@ public class LevelEngine {
 	
 	public LevelEngine() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void createLevel(int levelNum) {
