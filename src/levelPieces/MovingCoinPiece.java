@@ -16,7 +16,7 @@ public class MovingCoinPiece extends GamePiece implements Moveable {
 	@Override
 	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
 		if (this.getLocation() == playerLocation) {
-			return InteractionResult.ADVANCE;
+			return InteractionResult.GET_POINT;
 		} else {
 			return InteractionResult.NONE;
 		}

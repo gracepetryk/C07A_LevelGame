@@ -10,7 +10,7 @@ import levelPieces.HurdlePiece;
 import levelPieces.MonsterPiece;
 import levelPieces.MovingCoinPiece;
 import levelPieces.SentryGunPiece;
-import levelPieces.SpikesPiece;
+import levelPieces.SpikesPiece;	
 
 public class LevelEngine {
 	
@@ -25,6 +25,12 @@ public class LevelEngine {
 	}
 	
 	public void createLevel(int levelNum) {
+		// clear board and piece lists
+		board = new Drawable[GameEngine.BOARD_SIZE];
+		movingPieces = new ArrayList<Moveable>();
+		interactingPieces = new ArrayList<GamePiece>();
+		
+		// call level building methods
 		if (levelNum == 1) {
 			level1();
 		} else if (levelNum == 2) {
@@ -42,23 +48,6 @@ public class LevelEngine {
 			}
 		}
 	}
-	
-	public Drawable[] getBoard() {
-		return board;
-	}
-	
-	public ArrayList<Moveable> getMovingPieces() {
-		return movingPieces;
-	}
-	
-	public ArrayList<GamePiece> getInteractingPieces() {
-		return interactingPieces;
-	}
-	
-	public int getPlayerStartLoc() {
-		return playerStartLoc;
-	}
-	
 	
 	/**
 	 * Instantiates level 1
@@ -95,5 +84,24 @@ public class LevelEngine {
 		board[18] = new SentryGunPiece(18);
 		board[20] = new AdvancePiece(20);
 	}
+	
+	public Drawable[] getBoard() {
+		return board;
+	}
+	
+	public ArrayList<Moveable> getMovingPieces() {
+		return movingPieces;
+	}
+	
+	public ArrayList<GamePiece> getInteractingPieces() {
+		return interactingPieces;
+	}
+	
+	public int getPlayerStartLoc() {
+		return playerStartLoc;
+	}
+	
+	
+	
 	
 }
