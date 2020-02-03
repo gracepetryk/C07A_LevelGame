@@ -14,6 +14,7 @@ public class SentryGunPiece extends GamePiece {
 
 	@Override
 	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
+		// hit's the player if right next to them, gives point if jumped on
 		if (Math.abs(playerLocation - this.getLocation()) == 1) {
 			return InteractionResult.HIT;
 		} else if (playerLocation == this.getLocation()) {

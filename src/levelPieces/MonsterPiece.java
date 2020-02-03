@@ -32,8 +32,7 @@ public class MonsterPiece extends GamePiece implements Moveable {
 		
 		gameBoard[this.getLocation()] = null;
 		
-		
-		
+		// test the squares +/- 2 from the monster and move towards them, jumping over obstacles.
 		if ( this.getLocation() > playerLocation) {
 			// monster is on the right of the player
 			for (int i = 1; i <= 2; i++  ) {

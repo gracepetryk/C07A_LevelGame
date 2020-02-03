@@ -1,8 +1,7 @@
 package levelPieces;
 
-import javax.swing.plaf.basic.BasicTreeUI.TreeCancelEditingAction;
-
 import gameEngine.Drawable;
+import gameEngine.GameEngine;
 import gameEngine.InteractionResult;
 import gameEngine.Moveable;
 
@@ -36,14 +35,17 @@ public class MovingCoinPiece extends GamePiece implements Moveable {
 		
 		boolean leftFree = false;
 		boolean rightFree = false;
-		// free on left side
-		if (gameBoard[this.getLocation() - 1] == null) {
-			leftFree = true;
-		}
-		if (gameBoard[this.getLocation() + 1] == null) {
-			rightFree = true;
-		}
 		
+		// free on left side
+		int leftIndex = this.getLocation() - 1;
+		leftFree = leftIndex >= 0 && gameBoard[leftIndex] == null;
+		
+		
+		// free on right side
+		int rightIndex = this.getLocation() + 1;
+		rightFree = rightIndex < GameEngine.BOARD_SIZE && gameBoard[rightIndex] == null;
+		
+		// randomly move left or right
 		if (leftFree && rightFree) {
 			if ( Math.random() < 0.5) {
 				this.setLocation(this.getLocation() - 1);

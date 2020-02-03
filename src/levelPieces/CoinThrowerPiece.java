@@ -13,6 +13,7 @@ public class CoinThrowerPiece extends GamePiece {
 
 	@Override
 	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
+		// throws a coin at you if you're two squares away but hits you if you're right next to it.
 		if (Math.abs(playerLocation - this.getLocation()) == 2) {
 			return InteractionResult.GET_POINT;
 		} else if (playerLocation == this.getLocation()) {
