@@ -12,7 +12,6 @@ import org.junit.Test;
 import gameEngine.Drawable;
 import gameEngine.GameEngine;
 import gameEngine.InteractionResult;
-import junit.framework.Assert;
 
 public class TestInteractions {
 	
