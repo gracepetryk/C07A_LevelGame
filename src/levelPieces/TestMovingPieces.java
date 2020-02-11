@@ -47,7 +47,8 @@ public class TestMovingPieces {
 		// holds whether each spot has been moved too
 		boolean[] hasMovedToSpotArray = new boolean[GameEngine.BOARD_SIZE];
 		
-		for (int i = 0; i < 2000; i++) {
+		for (int i = 0; i < 2000; i++) { 
+			// move the coin 2000 times and check to make sure each spot has been moved too one
 			movingCoinPiece.move(gameBoard, 6);
 			int location = movingCoinPiece.getLocation();
 			
@@ -62,6 +63,50 @@ public class TestMovingPieces {
 			if (hasMovedToSpotArray[i] == false) {
 				fail("coin never moved to location: " + i);
 			}
+		}
+	}
+	
+	
+	/**
+	 * Tests the movement of the monster piece
+	 * - 1. Ensures it moves towards player
+	 * - 2. Ensures it jumps over piece
+	 * - 3. Ensures it doesn't jump over an empty piece
+	 * - 4. Ensures it doesn't jump over two pieces
+	 */
+	@Test
+	public void testMonsterPiece() {
+		Drawable[] gameBoard = new Drawable[GameEngine.BOARD_SIZE];
+		
+		MonsterPiece monsterPiece = new MonsterPiece(10);
+		gameBoard[10] = monsterPiece;
+		
+		// test 1 and 3
+		monsterPiece.move(gameBoard, 0);
+		
+		if (monsterPiece.getLocation() != 9) {
+			fail("monster piece did not move only one space towards player");
+		}
+		
+		// test 2
+		HurdlePiece hurdlePiece = new HurdlePiece();
+		gameBoard[8] = hurdlePiece;
+		
+		monsterPiece.move(gameBoard, 0);
+		
+		if (monsterPiece.getLocation() != 7) {
+			fail("monster piece did not jump over piece towards player");
+		}
+		
+		// test 4
+		
+		gameBoard[6] = hurdlePiece;
+		gameBoard[5] = hurdlePiece;
+		
+		monsterPiece.move(gameBoard, 0);
+		
+		if (monsterPiece.getLocation() != 7) {
+			fail("monster piece attempted to jump over more than one piece");
 		}
 	}
 }

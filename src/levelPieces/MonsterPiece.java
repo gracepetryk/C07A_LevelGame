@@ -33,22 +33,19 @@ public class MonsterPiece extends GamePiece implements Moveable {
 		gameBoard[this.getLocation()] = null;
 		
 		// test the squares +/- 2 from the monster and move towards them, jumping over obstacles.
-		if ( this.getLocation() > playerLocation) {
-			// monster is on the right of the player
-			for (int i = 1; i <= 2; i++  ) {
-				int testLocation = this.getLocation() + i;
-				if (gameBoard[testLocation] == null || playerLocation == testLocation) {
-					this.setLocation(getLocation() + i);
-					break;
-				}
-			}
-		} else if ( this.getLocation() < playerLocation ) {
-			for (int i = 1; i <= 2; i++ ) {
-				int testLocation = this.getLocation() - i;
-				if (gameBoard[testLocation] == null || playerLocation == testLocation) {
-					this.setLocation(getLocation() - i);
-					break;
-				}
+		
+		int playerDirection = 1; // if 1, player is to right
+		
+		if (playerLocation < this.getLocation()) {
+			playerDirection =  -1; /// if -1, player is to left
+		}
+		
+		// check the two spots in the direction of the player and move if free
+		for (int i = 1; i <= 2; i++) {
+			int targetIndex = this.getLocation() + (i * playerDirection);
+			if (gameBoard[targetIndex] == null) {
+				this.setLocation(targetIndex);
+				break; // break so we don't move 2 spaces if only one is needed
 			}
 		}
 		
